@@ -15,6 +15,7 @@ ps_theme <- function() {
     axis.text = element_text(colour = "black", face = "italic", size = 10),
     axis.title = element_text(colour = "black", face = "bold", size = 12),
     axis.ticks = element_line(colour = "black"),
+    plot.title = element_text(hjust=0.5, face = "bold", size = 18),
     legend.position = "bottom"
   )
 }
@@ -25,8 +26,7 @@ ggplot(vegetation.height_GT2, aes(x = Exposition , y=Vegetation.Height, colour =
   scale_colour_manual(values = c(cbPalette[3],cbPalette[7])) +
   labs (x="Exposition", y="FAPAR") +
   ggtitle("Vegetationshöhen auf Nord- und Südseite") +
-  ps_theme()+
-  theme(plot.title = element_text(hjust=0.5, face = "bold", size = 18))
+  ps_theme()
 ggsave(r"(graphs\vegetation_heights-n-s.png)", width = 6, height = 4)
 
 ggplot(vegetation.height_GT2, aes(x = Exposition , y=Vegetation.Height, fill = Exposition)) +
@@ -34,6 +34,5 @@ ggplot(vegetation.height_GT2, aes(x = Exposition , y=Vegetation.Height, fill = E
   scale_fill_manual(values = c(cbPalette[3],cbPalette[7])) +
   labs (x="Exposition", y="Vegetationshöhe" ) +
   ggtitle("Vegetationshöhen") +
-  ps_theme()+
-  theme(plot.title = element_text(hjust=0.5, face = "bold", size = 18))
+  ps_theme()
 ggsave(r"(graphs\vegetation_heights-n-s_boxplot.png)", width = 6, height = 4)
