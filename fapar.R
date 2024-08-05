@@ -24,6 +24,6 @@ ggplot(FAPAR_GT2, aes(x = FAPAR , y=Stump, colour = ..level..)) +
   geom_density2d(show.legend = FALSE, bins = 20, size = 0.5) +
   scale_colour_gradient(low = cbPalette[3], high = cbPalette[5]) +
   labs (x="FAPAR", y="Stubbe") +
-  ggtitle("FAPAR auf Nord- und Südseite GT2") +
+  ggtitle("FAPAR-Werte GT2") +
   ps_theme()
 ggsave(r"(graphs\fapar_gt2_density2d.png)", width = 6, height = 4)
