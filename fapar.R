@@ -20,9 +20,24 @@ ps_theme <- function() {
   )
 }
 
-ggplot(FAPAR_GT2, aes(x = FAPAR , y=Stump)) +
-  geom_density2d(show.legend = FALSE, bins = 20) +
-  scale_color_continuous() +
+none_theme <- function() {
+  theme(
+    panel.background = element_blank(),
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor.x = element_blank(),
+    panel.grid.major.y =  element_blank(),
+    panel.grid.minor.y = element_blank(),
+    axis.text = element_blank(),
+    axis.title = element_blank(),
+    axis.ticks = element_blank(),
+    plot.title = element_blank(),
+    legend.position = "bottom"
+  )
+}
+
+ggplot(FAPAR_GT2, aes(x = FAPAR , y=Stump, colour = ..level..)) +
+  geom_density2d(show.legend = FALSE, bins = 20, size = 0.5) +
+  scale_colour_gradient(low = cbPalette[3], high = cbPalette[5]) +
   labs (x="FAPAR", y="Stubbe") +
   ggtitle("FAPAR auf Nord- und Südseite GT2") +
   ps_theme()
