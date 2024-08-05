@@ -21,9 +21,9 @@ ps_theme <- function() {
 }
 
 
-ggplot(vegetation.height_GT2, aes(x = Exposition , y=Vegetation.Height, colour = Exposition)) +
-  geom_point(size=5, shape="diamond", show.legend = FALSE) +
-  scale_colour_manual(values = c(cbPalette[3],cbPalette[7])) +
+ggplot(vegetation.height_GT2, aes(x = Exposition , y=Vegetation.Height, fill = Exposition)) +
+  geom_point(size=5, shape=23, show.legend = FALSE) +
+  scale_fill_manual(values = c(cbPalette[3],cbPalette[7])) +
   labs (x="Exposition", y="FAPAR") +
   ggtitle("Vegetationshöhen auf Nord- und Südseite") +
   ps_theme()
