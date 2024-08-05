@@ -20,21 +20,6 @@ ps_theme <- function() {
   )
 }
 
-none_theme <- function() {
-  theme(
-    panel.background = element_blank(),
-    panel.grid.major.x = element_blank(),
-    panel.grid.minor.x = element_blank(),
-    panel.grid.major.y =  element_blank(),
-    panel.grid.minor.y = element_blank(),
-    axis.text = element_blank(),
-    axis.title = element_blank(),
-    axis.ticks = element_blank(),
-    plot.title = element_blank(),
-    legend.position = "bottom"
-  )
-}
-
 ggplot(FAPAR_GT2, aes(x = FAPAR , y=Stump, colour = ..level..)) +
   geom_density2d(show.legend = FALSE, bins = 20, size = 0.5) +
   scale_colour_gradient(low = cbPalette[3], high = cbPalette[5]) +

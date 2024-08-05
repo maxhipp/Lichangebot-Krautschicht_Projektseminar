@@ -17,3 +17,18 @@ ps_theme <- function() {
     legend.position = "bottom"
   )
 }
+
+none_theme <- function() {
+  theme(
+    panel.background = element_blank(),
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor.x = element_blank(),
+    panel.grid.major.y =  element_blank(),
+    panel.grid.minor.y = element_blank(),
+    axis.text = element_blank(),
+    axis.title = element_blank(),
+    axis.ticks = element_blank(),
+    plot.title = element_blank(),
+    legend.position = "bottom"
+  )
+}
