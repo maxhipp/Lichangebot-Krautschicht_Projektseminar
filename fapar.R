@@ -26,4 +26,34 @@ ggplot(FAPAR_GT2, aes(x = FAPAR , y=Stump, colour = ..level..)) +
   labs (x="FAPAR", y="Stubbe") +
   ggtitle("FAPAR-Werte GT2") +
   ps_theme()
-ggsave(r"(graphs\fapar_gt2_density2d.png)", width = 6, height = 4)
+ggsave(r"(graphs\fapar_gt2_density2d.png)", width = 6, height = 5)
+
+FAPAR_GT2_mean <- aggregate(FAPAR_GT2$FAPAR, list(FAPAR_GT2$Stump, FAPAR_GT2$Exposition), FUN=mean)
+colnames(FAPAR_GT2_mean) <- c("Stump","Exposition","FAPAR_mean")
+FAPAR_GT2_mean_N <- FAPAR_GT2_mean[FAPAR_GT2_mean$Exposition == "N",]
+FAPAR_GT2_mean_S <- FAPAR_GT2_mean[FAPAR_GT2_mean$Exposition == "S",]
+
+
+ggplot() +
+  geom_point(data = FAPAR_GT2, aes(x = Stump , y = FAPAR, fill = Exposition), shape = 21, size = 2, alpha = 0.5) +
+  scale_fill_manual(values = c(cbPalette[3],cbPalette[7])) +
+  scale_color_manual(values = c(cbPalette[3],cbPalette[7])) +
+  labs (x="Stubbe", y="FAPAR") +
+  ggtitle("FAPAR-Werte GT2") +
+  ps_theme()+
+  geom_point(data = FAPAR_GT2_mean, aes(x = Stump, y = FAPAR_mean, fill = Exposition), shape = 23, size=5, stroke = 1)+
+  geom_hline(yintercept = mean(FAPAR_GT2_mean_N$FAPAR, na.rm=TRUE), color = cbPalette[3], size = 1)+
+  geom_hline(yintercept = mean(FAPAR_GT2_mean_S$FAPAR, na.rm=TRUE), color = cbPalette[7], size = 1)
+ggsave(r"(graphs\fapar_gt2_stumps_n-s.png)", width = 10, height = 5)
+
+ggplot() +
+  geom_violin(data = FAPAR_GT2, aes(x = Exposition , y = FAPAR, fill = Exposition), alpha = 0.75) +
+  scale_fill_manual(values = c(cbPalette[3],cbPalette[7])) +
+  scale_color_manual(values = c(cbPalette[3],cbPalette[7])) +
+  labs (x="Exposition", y="FAPAR") +
+  ggtitle("FAPAR-Werte GT2") +
+  ps_theme()+
+  geom_point(data = FAPAR_GT2_mean, aes(x = Exposition, y = FAPAR_mean), shape = 4, size=2, stroke = 1, alpha = 0.5)+
+  geom_hline(yintercept = mean(FAPAR_GT2_mean_N$FAPAR, na.rm=TRUE), color = cbPalette[3], size = 1)+
+  geom_hline(yintercept = mean(FAPAR_GT2_mean_S$FAPAR, na.rm=TRUE), color = cbPalette[7], size = 1)
+ggsave(r"(graphs\fapar_gt2_n-s.png)", width = 6, height = 5)

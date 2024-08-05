@@ -20,7 +20,6 @@ ps_theme <- function() {
   )
 }
 
-
 ggplot(vegetation.height_GT2, aes(x = Exposition , y=Vegetation.Height, fill = Exposition)) +
   geom_point(size=5, shape=23, show.legend = FALSE) +
   scale_fill_manual(values = c(cbPalette[3],cbPalette[7])) +
